@@ -1,0 +1,82 @@
+{
+  "name": "lebraile-app",
+  "version": "0.0.4",
+  "author": "Paulo Porto <pauloesporto@gmail.com>",
+  "homepage": "https://br.linkedin.com/in/paulo-porto-09970449",
+  "scripts": {
+    "clean": "lebraile-app clean",
+    "build": "lebraile-app-scripts build",
+    "lint": "lebraile-app-scripts lint",
+    "ionic:build": "lebraile-app-scripts build",
+    "ionic:serve": "lebraile-app-scripts serve"
+  },
+  "dependencies": {
+    "@angular/common": "5.2.7",
+    "@angular/compiler": "5.2.7",
+    "@angular/compiler-cli": "5.2.7",
+    "@angular/core": "5.2.7",
+    "@angular/forms": "5.2.7",
+    "@angular/http": "5.2.7",
+    "@angular/platform-browser": "5.2.7",
+    "@angular/platform-browser-dynamic": "5.2.7",
+    "@ionic-native/barcode-scanner": "^4.11.0",
+    "@ionic-native/camera": "^4.11.0",
+    "@ionic-native/core": "^4.4.0",
+    "@ionic-native/device": "^4.3.3",
+    "@ionic-native/keyboard": "^4.3.3",
+    "@ionic-native/pro": "^4.5.2",
+    "@ionic-native/qr-scanner": "^4.11.0",
+    "@ionic-native/splash-screen": "^4.4.0",
+    "@ionic-native/status-bar": "^4.4.0",
+    "@ionic-native/toast": "^4.11.0",
+    "@ionic/pro": "1.0.20",
+    "@ionic/storage": "2.1.3",
+    "cordova-ios": "^4.5.4",
+    "cordova-plugin-console": "^1.1.0",
+    "cordova-plugin-device": "^1.1.7",
+    "cordova-plugin-qrscanner": "^2.6.0",
+    "cordova-plugin-splashscreen": "^4.1.0",
+    "cordova-plugin-statusbar": "^2.4.2",
+    "cordova-plugin-whitelist": "^1.3.3",
+    "cordova-plugin-x-toast": "^2.6.2",
+    "cordova-sqlite-storage": "^2.3.3",
+    "ionic-angular": "3.9.2",
+    "ionic-plugin-keyboard": "^2.2.1",
+    "ionicons": "3.0.0",
+    "phonegap-plugin-barcodescanner": "^8.0.0",
+    "rxjs": "5.5.2",
+    "sw-toolbox": "3.6.0",
+    "zone.js": "0.8.18",
+    "cordova-android": "~7.0.0",
+    "cordova-browser": "~5.0.3"
+  },
+  "devDependencies": {
+    "@ionic/app-scripts": "3.1.8",
+    "typescript": "2.4.2"
+  },
+  "description": "Lebraile App",
+  "cordovaPlugins": [],
+  "cordovaPlatforms": [],
+  "cordova": {
+    "plugins": {
+      "cordova-plugin-console": {},
+      "cordova-plugin-device": {},
+      "cordova-plugin-statusbar": {},
+      "cordova-plugin-whitelist": {},
+      "ionic-plugin-keyboard": {},
+      "cordova-plugin-splashscreen": {},
+      "cordova-sqlite-storage": {},
+      "cordova-plugin-qrscanner": {},
+      "phonegap-plugin-barcodescanner": {},
+      "cordova-plugin-x-toast": {}
+    },
+    "platforms": [
+      "ios",
+      "android",
+      "browser"
+    ]
+  },
+  "config": {
+    "ionic_sass": "./sass.js"
+  }
+}

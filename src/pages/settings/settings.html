@@ -1,0 +1,38 @@
+<!-- -->
+<ion-header class="no-shadow">
+
+  <ion-navbar class="no-border">
+    <ion-title>
+      <ion-icon name="cog" class="text-primary"></ion-icon>
+      <span class="text-primary">Configurações</span>
+    </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content class="common-bg">
+  <!-- User settings-->
+  <ion-item-group>
+    <ion-item-divider color="secondary" class="bold">Configurações do Usuário</ion-item-divider>
+    <ion-item>
+      <ion-label>Idioma</ion-label>
+      <ion-select [(ngModel)]="language" cancelText="Cancel" okText="OK">
+        <ion-option value="en-US" selected="true">English (US)</ion-option>
+        <ion-option value="pt-BR">Portuguese (BR)</ion-option>
+        <ion-option value="es-CO">Spanish (CO)</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Notificações?</ion-label>
+      <ion-toggle checked="true"></ion-toggle>
+    </ion-item>
+  </ion-item-group>
+  <!-- App settings-->
+  <ion-item-group>
+    <ion-item-divider color="secondary" class="bold">Configurações do App</ion-item-divider>
+    <ion-item>
+      <ion-label>Notificações?</ion-label>
+      <ion-toggle checked="false"></ion-toggle>
+    </ion-item>
+  </ion-item-group>  
+</ion-content>

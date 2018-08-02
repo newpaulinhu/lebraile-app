@@ -1,0 +1,37 @@
+<!-- Generated template for the EquipamentosComponent component -->
+<!-- -->
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      <strong>Lebraile</strong> App
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button tappable (click)="goToAccount()">
+        <ion-icon name="cog"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="trips detail-bg">
+  <h1>
+    <button ion-button color="dark" full round (click)="adicionarEquipamento()">Adicionar Equipamento</button>
+  </h1>
+  
+  <ion-card *ngFor="let eqp of equipamentos">
+    <ion-card-header>
+      <h2>Equipamento: $ {{eqp.id}}</h2>
+    </ion-card-header>
+    <ion-card-content>
+      <ul>
+        <li>{{eqp.id}}</li>
+        <li>{{eqp.nome}}</li>
+        <li>{{eqp.velocidadeLeitura}}</li>
+        <li>{{eqp.tempoCaractere}}</li>
+      </ul>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

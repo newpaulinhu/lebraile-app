@@ -1,0 +1,33 @@
+<!-- -->
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      <strong>Lebraile</strong> App
+    </ion-title>
+    <ion-buttons end>
+      <button ion-button tappable (click)="goToAccount()">
+        <ion-icon name="cog"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="animated fadeIn common-bg">
+
+  <ion-list>
+    <ion-item>
+      <button ion-button icon-start block no-margin color="primary" class="round" tappable (click)="cadastrarEquipamento()">
+        <ion-icon name="search"></ion-icon> Escanear Equipamento
+      </button>
+  </ion-item>
+  <ion-item>
+    <button ion-button icon-start block no-margin color="primary" class="round" tappable (click)="traduzir()">
+      <ion-icon name="search"></ion-icon> Traduzir
+    </button>
+  </ion-item>
+</ion-list>
+
+</ion-content>

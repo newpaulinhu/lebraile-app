@@ -1,0 +1,12 @@
+[
+    {
+      "id":"LEBRAILE-EQP-01",
+      "name":"Lebraile 01 - Pedrinho",
+      "ip":"192.168.1.1"
+    },
+    {
+      "id":"LEBRAILE-EQP-02",
+      "desc":"Lebraile 02 - Joãozinho",
+      "ip":"192.168.45.1"
+    }
+  ]
