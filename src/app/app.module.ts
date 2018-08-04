@@ -3,10 +3,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { IonicStorageModule } from '@ionic/storage';
-import { Camera } from '@ionic-native/camera';
-import { BarcodeScanner } from '@ionic-native/barcode-scanner';
 import { Toast } from '@ionic-native/toast';
 import { Storage } from "@ionic/storage";
+import { Camera } from '@ionic-native/camera';
+import { QRScanner } from '@ionic-native/qr-scanner';
 
 import {StatusBar} from '@ionic-native/status-bar';
 import {SplashScreen} from '@ionic-native/splash-screen';
@@ -69,11 +69,11 @@ export function provedorStorage() {
   providers: [
     StatusBar,
     SplashScreen,
-    Keyboard,
     Camera,
+    QRScanner,
+    Keyboard,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     { provide: Storage, useFactory: provedorStorage },
-    BarcodeScanner,
     Toast,
     EquipamentoServiceProvider
   ]

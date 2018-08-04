@@ -25,6 +25,8 @@ export class MyApp {
 
   rootPage: any = HomePage;
 
+  transparente = "transparentBody";
+
   appMenuItems: Array<MenuItem>;
 
   constructor(

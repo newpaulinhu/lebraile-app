@@ -16,11 +16,11 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content padding class="trips detail-bg">
+<ion-content padding>
   <h1>
     <button ion-button color="dark" full round (click)="adicionarEquipamento()">Adicionar Equipamento</button>
   </h1>
-  
+
   <ion-card *ngFor="let eqp of equipamentos">
     <ion-card-header>
       <h2>Equipamento: $ {{eqp.id}}</h2>

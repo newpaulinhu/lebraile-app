@@ -12,7 +12,7 @@
 }
 
 .common-bg {
-  background-color: #FAFBFC;
+  background-color: #fafbfc;
 }
 
 .white-bg {
@@ -32,11 +32,16 @@
 }
 
 .green-bg {
-  background-color: #68C91F;
+  background-color: #68c91f;
 }
 
 .profile-bg {
-  background-image: linear-gradient(135deg, color($colors, dark), color($colors, primary), color($colors, light));
+  background-image: linear-gradient(
+    135deg,
+    color($colors, dark),
+    color($colors, primary),
+    color($colors, light)
+  );
 }
 //
 //
@@ -49,11 +54,11 @@
 }
 
 .text-green {
-  color: #68C91F;
+  color: #68c91f;
 }
 
 .text-yellow {
-  color: #FDD835;
+  color: #fdd835;
 }
 
 .text-white {
@@ -63,13 +68,12 @@
 //
 .dark-trans,
 .toast-md .toast-wrapper {
-  background-color: rgba(0, 0, 0, .4);
+  background-color: rgba(0, 0, 0, 0.4);
 }
-
 
 // Helpers
 .quarter-op {
-  opacity: .25;
+  opacity: 0.25;
 }
 
 .no-paddingTRL {
@@ -113,7 +117,7 @@
 }
 
 .mt-half {
-  margin-top: .5rem !important;
+  margin-top: 0.5rem !important;
 }
 
 .mt-1 {
@@ -121,7 +125,7 @@
 }
 
 .mb-half {
-  margin-bottom: .5rem;
+  margin-bottom: 0.5rem;
 }
 
 .marginB-16px {
@@ -209,15 +213,15 @@
 
 // buttons configs
 .btn-facebook {
-  background-color: #3B5999;
+  background-color: #3b5999;
 }
 
 .btn-twitter {
-  background-color: #00ACEE;
+  background-color: #00acee;
 }
 
 .btn-gplus {
-  background-color: #E04006
+  background-color: #e04006;
 }
 
 // badge style
@@ -229,14 +233,13 @@ ion-badge {
 
 // card style
 .card {
-  background: #FFF;
+  background: #fff;
   border-radius: 1rem;
   box-shadow: 0 0 1px rgba(86, 61, 124, 0.2), 0 2px 4px rgba(86, 61, 124, 0.15);
 }
 
 // navbar style
 ion-navbar.no-border {
-
   .toolbar-background {
     border: none;
   }
@@ -244,7 +247,6 @@ ion-navbar.no-border {
 
 // list style
 .list-no-border {
-
   .item:first-child {
     border: none;
   }
@@ -284,7 +286,7 @@ ion-navbar.no-border {
 .toolbar {
   &.nav-transparent {
     .toolbar-background {
-      background-color: rgba(86, 61, 124, .65);
+      background-color: rgba(86, 61, 124, 0.65);
     }
   }
   .toolbar-title {
@@ -365,19 +367,24 @@ ion-navbar.no-border {
     height: 68px;
     display: inline-block;
     border-radius: 50%;
-    box-shadow: inset 0 0 10rem rgba(0,0,0,.25), 0 0 4rem rgba(255,255,255,.45);
+    box-shadow: inset 0 0 10rem rgba(0, 0, 0, 0.25),
+      0 0 4rem rgba(255, 255, 255, 0.45);
     img {
       border-radius: 50%;
     }
   }
   .toolbar-background {
-    background-image: linear-gradient(135deg, color($colors, dark), color($colors, primary));
+    background-image: linear-gradient(
+      135deg,
+      color($colors, dark),
+      color($colors, primary)
+    );
   }
 
   .other-data {
     .column {
       &:first-child {
-        border-right: 1px solid rgba(36, 50, 157, .25);
+        border-right: 1px solid rgba(36, 50, 157, 0.25);
       }
     }
   }
@@ -389,7 +396,7 @@ ion-navbar.no-border {
       border-bottom: 0;
     }
     .item-inner {
-      border-color: rgba(86, 61, 124, .1);
+      border-color: rgba(86, 61, 124, 0.1);
     }
   }
 }
@@ -401,7 +408,7 @@ ion-navbar.no-border {
   .bg-filter {
     position: relative;
     height: 150px;
-    background: rgba(0, 0, 0, .5);
+    background: rgba(0, 0, 0, 0.5);
 
     .bottom-info {
       position: absolute;
@@ -416,12 +423,12 @@ ion-navbar.no-border {
     padding: 0.5rem 1rem;
     top: 0;
     right: 0;
-    background-color: #68C91F;
+    background-color: #68c91f;
     color: #fff;
   }
 
   .origin-price {
-    color: #C0C0C0;
+    color: #c0c0c0;
     text-decoration: line-through;
   }
 
@@ -452,13 +459,12 @@ ion-slides.to-top {
 
 // style for ion-icon
 ion-icon[ng-reflect-disabled="true"] {
-  color: #FAFBFC;
+  color: #fafbfc;
   pointer-events: none;
 }
 
 // checkout info style
 .checkout-info {
-
   span {
     font-size: 1.2rem;
   }
@@ -513,7 +519,7 @@ ion-icon[ng-reflect-disabled="true"] {
 .animated.flipOutY,
 .animated.bounceIn,
 .animated.bounceOut {
-  animation-duration: .75s;
+  animation-duration: 0.75s;
 }
 
 @keyframes fadeIn {

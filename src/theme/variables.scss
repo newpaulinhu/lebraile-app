@@ -42,3 +42,8 @@ $colors: (
 
 $ionicons-font-path: "../assets/fonts";
 @import "ionic.ionicons";
+
+ion-app{
+  background: none;
+}
+
