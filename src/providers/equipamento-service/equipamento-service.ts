@@ -21,27 +21,23 @@ export class EquipamentoServiceProvider {
   ) {}
 
   public salvarEquipamento(equipamento: Equipamento) {
-    this._storage.set(equipamento.id, equipamento);
+    this._storage.set("equipamentos", equipamento);
   }
 
 
   public listarEquipamentos() {
-    let arr = [];
-    return this._storage.forEach((v, k, i) => {
-        if (k.indexOf('LEBRAILE') !== -1)
-          arr.push(v);
-      }).then(() => {
-        return arr;
-      });
+    return Observable.fromPromise(this._storage
+      .get("equipamentos")
+      .then((equipamentos: Equipamento[]) => {
+        return equipamentos;
+    }));
   }
 
   public getEquipamento(id: string){
     return Observable.fromPromise(this._storage
       .get(id)
-      .then((itens: Equipamento[]) => {
-        console.log(itens);
-        itens = itens ? itens : new Array<Equipamento>();
-        return itens;
+      .then((item: Equipamento) => {
+        return item;
     }));
   }
   

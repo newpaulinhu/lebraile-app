@@ -18,14 +18,14 @@ import { Equipamento } from "./../../models/equipamento/equipamento";
 })
 export class EquipamentosPage {
   
-  equipamentos: any[];
+  equipamentos: Array<Equipamento>;
 
   constructor(
     private barcodeScanner: BarcodeScanner,
     private toast: Toast,
     private equipamentoService: EquipamentoServiceProvider) {
-      this.equipamentoService.listarEquipamentos().then((equipamento : Equipamento[]) => {
-        this.equipamentos = <Equipamento[]> equipamento;
+      this.equipamentoService.listarEquipamentos().subscribe((equipamento : Equipamento[]) => {
+        this.equipamentos = equipamento;
       });
   }
 
@@ -33,13 +33,11 @@ export class EquipamentosPage {
   adicionarEquipamento(){
     this.barcodeScanner.scan().then((barcodeData) => {
       let equipamentoSelecionado = this.equipamentoService.getEquipamento(barcodeData.text);
-      console.log('Equipamento Cadastrado: ');
-      console.log(equipamentoSelecionado);
-      if(equipamentoSelecionado !== undefined) {
+      if(equipamentoSelecionado) {
         this.toast.show(`Equipamento Já Cadastrado`, '5000', 'center').subscribe();
       } else {
         this.equipamentoService.salvarEquipamento(new Equipamento(barcodeData.text, "Equipamento do Paulo", 100, 100));
-        this.equipamentoService.listarEquipamentos().then((equipamento : Equipamento[]) => {
+        this.equipamentoService.listarEquipamentos().subscribe((equipamento : Equipamento[]) => {
           this.equipamentos = <Equipamento[]> equipamento;
         });
         this.toast.show(`Equipamento Cadastrado com Sucesso`, '5000', 'center').subscribe();
