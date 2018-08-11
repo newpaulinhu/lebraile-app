@@ -21,11 +21,14 @@ export class EquipamentoServiceProvider {
   ) {}
 
   public salvarEquipamento(equipamento: Equipamento) {
-    this._storage.set("equipamentos", equipamento);
+    this.listarEquipamentos().subscribe((equipamentos: Equipamento[]) => {
+      equipamentos.push(equipamento);
+      this._storage.set('equipamentos', equipamentos);
+    });
   }
 
 
-  public listarEquipamentos() {
+  public listarEquipamentos(): Observable<Equipamento[]> {
     return Observable.fromPromise(this._storage
       .get("equipamentos")
       .then((equipamentos: Equipamento[]) => {

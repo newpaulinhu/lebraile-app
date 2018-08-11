@@ -12,7 +12,7 @@ import { finalize } from "rxjs/operators";
 })
 export class EquipamentosPage {
 
-  equipamentos: Array<Equipamento>;
+  equipamentos: Equipamento[];
 
   constructor(
     private qrScanner: QRScanner,
@@ -20,40 +20,32 @@ export class EquipamentosPage {
     private equipamentoService: EquipamentoServiceProvider
   ) {
     this.equipamentoService
-      .listarEquipamentos()
-      .subscribe((equipamento: Equipamento[]) => {
+      .listarEquipamentos().subscribe(equipamento => {
         this.equipamentos = equipamento;
       });
   }
 
   adicionarEquipamento() {
-    console.log("passou aqui");
     this.qrScanner
       .prepare()
       .then((status: QRScannerStatus) => {
         if (status.authorized) {
           let scanSub = this.qrScanner.scan().subscribe(
             qrCodeRead => {
-              let equipamentoSelecionado = this.equipamentoService.getEquipamento(
-                qrCodeRead
-              );
-              if (equipamentoSelecionado) {
-                this.toast
-                  .show(`Equipamento Já Cadastrado`, "5000", "center")
-                  .subscribe();
-              } else {
-                this.equipamentoService.salvarEquipamento(
-                  new Equipamento(qrCodeRead, "Equipamento do Paulo", 100, 100)
-                );
-                this.equipamentoService
-                  .listarEquipamentos()
-                  .subscribe((equipamento: Equipamento[]) => {
-                    this.equipamentos = <Equipamento[]>equipamento;
-                  });
-                this.toast
-                  .show(`Equipamento Cadastrado com Sucesso`, "5000", "center")
-                  .subscribe();
-              }
+              this.equipamentoService.getEquipamento(qrCodeRead).subscribe(equipt => {
+                if (equipt) {
+                  this.toast.show(`Equipamento Já Cadastrado`, "5000", "center").subscribe();
+                } else {
+
+                  this.equipamentoService.salvarEquipamento(
+                    new Equipamento(qrCodeRead, "Equipamento do Paulo", 100, 100)
+                  );
+                  this.equipamentoService.listarEquipamentos().subscribe(equipamento => {
+                      this.equipamentos = equipamento;
+                    });
+                  this.toast.show(`Equipamento Cadastrado com Sucesso`, "5000", "center").subscribe();
+                }
+              });
               this.qrScanner.hide();
               scanSub.unsubscribe();
             },
