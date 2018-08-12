@@ -12,7 +12,7 @@ import { finalize } from "rxjs/operators";
 })
 export class EquipamentosPage {
 
-  equipamentos: Equipamento[];
+  equipamentos = new Array<Equipamento>();
 
   constructor(
     private qrScanner: QRScanner,
@@ -26,12 +26,9 @@ export class EquipamentosPage {
   }
 
   adicionarEquipamento() {
-    this.qrScanner
-      .prepare()
-      .then((status: QRScannerStatus) => {
+    this.qrScanner.prepare().then((status: QRScannerStatus) => {
         if (status.authorized) {
-          let scanSub = this.qrScanner.scan().subscribe(
-            qrCodeRead => {
+          let scanSub = this.qrScanner.scan().subscribe(qrCodeRead => {
               this.equipamentoService.getEquipamento(qrCodeRead).subscribe(equipt => {
                 if (equipt) {
                   this.toast.show(`Equipamento Já Cadastrado`, "5000", "center").subscribe();

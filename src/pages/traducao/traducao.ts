@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
+import { Toast } from "@ionic-native/toast";
 import {NavController} from "ionic-angular";
-
 import {EquipamentosPage} from "../equipamentos/equipamentos";
 import { EquipamentoServiceProvider } from "../../providers/equipamento-service/equipamento-service";
 
@@ -21,6 +21,7 @@ export class TraducaoPage {
 
   constructor(public http: HttpClient, 
               public nav: NavController,
+              private toast: Toast,
               private equipamentoService: EquipamentoServiceProvider) {}
 
    // choose place
@@ -36,14 +37,13 @@ export class TraducaoPage {
         this.enviarParaDevice(data);
       }, err => {
         console.log(err);
-        console.log('Erro na Tradução');
+        this.toast.show(`Erro chamada para a tradutora`, "5000", "center").subscribe();
       });
     });
   }
 
   enviarParaDevice(letraTraduzida :LetraTraduzida){
     this.equipamentoService.listarEquipamentos().subscribe(equipamentos => {
-      console.log(`Chamando Equipamentos`);
       equipamentos.forEach( equipamento => {
         console.log(`Chamando Equipamento ${equipamento.id} para a letra: ${letraTraduzida.caractere} -  ${letraTraduzida.braille}`);
         let path = `http://${equipamento.id}/braille/?pin=${letraTraduzida.braille}&tempo=300`;
@@ -51,7 +51,7 @@ export class TraducaoPage {
           this.http.get(path).subscribe(data => {
           }, err => {
             console.log(err);
-            console.log('Erro ao enviar para o lebraile');
+            this.toast.show(`Erro ao Enviar para o equipamento ${equipamento.id}`, "5000", "center").subscribe();
           });
         });
       })

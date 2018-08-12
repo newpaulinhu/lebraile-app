@@ -21,26 +21,26 @@ export class EquipamentoServiceProvider {
   ) {}
 
   public salvarEquipamento(equipamento: Equipamento) {
-    this.listarEquipamentos().subscribe((equipamentos: Equipamento[]) => {
+    this.listarEquipamentos().subscribe((equipamentos: Array<Equipamento>) => {
       equipamentos.push(equipamento);
       this._storage.set('equipamentos', equipamentos);
     });
   }
 
 
-  public listarEquipamentos(): Observable<Equipamento[]> {
+  public listarEquipamentos(): Observable<Array<Equipamento>> {
     return Observable.fromPromise(this._storage
       .get("equipamentos")
-      .then((equipamentos: Equipamento[]) => {
-        return equipamentos;
+      .then((equipamentos: Array<Equipamento>) => {
+        return equipamentos ? equipamentos : new Array<Equipamento>() ;
     }));
   }
 
-  public getEquipamento(id: string){
+  public getEquipamento(id: string): Observable<Equipamento>{
     return Observable.fromPromise(this._storage
-      .get(id)
-      .then((item: Equipamento) => {
-        return item;
+      .get("equipamentos")
+      .then((equipamentos: Array<Equipamento>) => {
+        return equipamentos.find(eqp => eqp.id === id);
     }));
   }
   
