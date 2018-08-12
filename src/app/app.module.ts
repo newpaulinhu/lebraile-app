@@ -1,3 +1,4 @@
+import { CameraPage } from './../pages/camera/camera';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { ErrorHandler, NgModule } from '@angular/core';
@@ -42,7 +43,8 @@ export function provedorStorage() {
     HomePage,
     LivrosPage,
     EquipamentosPage,
-    TraducaoPage
+    TraducaoPage,
+    CameraPage
   ],
   imports: [
     BrowserModule,
@@ -64,7 +66,8 @@ export function provedorStorage() {
     HomePage,
     LivrosPage,
     EquipamentosPage,
-    TraducaoPage
+    TraducaoPage,
+    CameraPage
   ],
   providers: [
     StatusBar,
