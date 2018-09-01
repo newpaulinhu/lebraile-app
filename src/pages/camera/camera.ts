@@ -1,10 +1,7 @@
 import { Component } from "@angular/core";
 import { NavController, NavParams } from "ionic-angular";
 import { Toast } from "@ionic-native/toast";
-import {
-  QRScanner,
-  QRScannerStatus
-} from "../../../node_modules/@ionic-native/qr-scanner";
+import { QRScanner, QRScannerStatus } from "../../../node_modules/@ionic-native/qr-scanner";
 import { EquipamentoServiceProvider } from "../../providers/equipamento-service/equipamento-service";
 import { Equipamento } from "./../../models/equipamento/equipamento";
 
@@ -26,40 +23,18 @@ export class CameraPage {
   }
 
   ionViewDidLoad() {
-    this.qrScanner
-      .prepare()
-      .then((status: QRScannerStatus) => {
+    this.qrScanner.prepare().then((status: QRScannerStatus) => {
         if (status.authorized) {
-          let scanSub = this.qrScanner.scan().subscribe(
-            qrCodeRead => {
-              this.equipamentoService
-                .getEquipamento(qrCodeRead)
-                .subscribe(equipt => {
-                  if (equipt) {
-                    this.toast
-                      .show(`Equipamento Já Cadastrado`, "5000", "center")
-                      .subscribe();
-                  } else {
-                    this.equipamentoService.salvarEquipamento(
-                      new Equipamento(
-                        qrCodeRead,
-                        "Equipamento do Paulo",
-                        100,
-                        100
-                      )
-                    );
-                    this.equipamentoService
-                      .listarEquipamentos()
-                      .subscribe(equipamento => {
+          let scanSub = this.qrScanner.scan().subscribe(qrCodeRead => {
+              this.equipamentoService.getEquipamento(qrCodeRead).subscribe(equipt => {
+                if (equipt) {
+                    this.toast.show(`Equipamento Já Cadastrado`, "5000", "center").subscribe();
+                 } else {
+                    this.equipamentoService.salvarEquipamento(new Equipamento( 1000, qrCodeRead, `Equipamento ${qrCodeRead}`, 1000));
+                    this.equipamentoService.listarEquipamentos().subscribe(equipamento => {
                         this.equipamentos = equipamento;
-                      });
-                    this.toast
-                      .show(
-                        `Equipamento Cadastrado com Sucesso`,
-                        "5000",
-                        "center"
-                      )
-                      .subscribe();
+                    });
+                    this.toast.show(`Equipamento Cadastrado com Sucesso`, "5000", "center").subscribe();
                   }
                 });
               this.qrScanner.hide();
@@ -71,18 +46,13 @@ export class CameraPage {
               this.navCtrl.pop();
             }
           );
-
           this.qrScanner.resumePreview();
-
-          this.qrScanner.show().then(
-            (data: QRScannerStatus) => {
+          this.qrScanner.show().then((data: QRScannerStatus) => {
               console.log("datashowing", data.showing);
-            },
-            err => {
+            }, err => {
               console.log("erro ao mostrar QR scanner");
             }
           );
-
         } else if (status.denied) {
           //TODO tratamento quand usuário nega o acesso
           console.log("acesso negado");

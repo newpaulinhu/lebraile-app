@@ -26,6 +26,7 @@ import {TraducaoPage} from "../pages/traducao/traducao";
 import {LivrosPage} from "../pages/livros/livros";
 import {EquipamentosPage} from "../pages/equipamentos/equipamentos";
 import { EquipamentoServiceProvider } from '../providers/equipamento-service/equipamento-service';
+import { TradutoraServiceProvider } from '../providers/tradutora-service/tradutora-service';
 
 
 export function provedorStorage() {
@@ -78,7 +79,8 @@ export function provedorStorage() {
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     { provide: Storage, useFactory: provedorStorage },
     Toast,
-    EquipamentoServiceProvider
+    EquipamentoServiceProvider,
+    TradutoraServiceProvider
   ]
 })
 

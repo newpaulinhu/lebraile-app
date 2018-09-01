@@ -1,9 +1,9 @@
 export class Equipamento {
     constructor(
-        public id: string,
-        public nome: string,
-        public velocidadeLeitura: number,
-        public tempoCaractere: number
-    ){}
+		public id?: number,
+		public ip?: string,
+		public nomeAluno?: string,
+		public tempoCaractere?: number
+	){}
     
 }

@@ -8,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 import { LetraTraduzida } from './letra-traduzida';
 import 'rxjs/add/operator/map';
 import { Equipamento } from '../../models/equipamento/equipamento';
+import { TradutoraServiceProvider } from '../../providers/tradutora-service/tradutora-service';
 
 @Component({
   selector: 'traducao',
@@ -22,42 +23,34 @@ export class TraducaoPage {
   constructor(public http: HttpClient, 
               public nav: NavController,
               private toast: Toast,
-              private equipamentoService: EquipamentoServiceProvider) {}
+              private equipamentoService: EquipamentoServiceProvider,
+              private tradutoraService: TradutoraServiceProvider) {}
 
    // choose place
   cadastrarEquipamento(from) {
     this.nav.push(EquipamentosPage, from);
   }
 
-  traduzir(){
-    
+  traduzir(): LetraTraduzida{
+    let letraTraduzida: LetraTraduzida;
     let letraTraducao = this.textoTraducao.substr(this.textoTraducao.length - 1);
-    return new Promise(resolve => {
-      this.http.get<LetraTraduzida>(`http://lebraile.herokuapp.com/lebraile/tradutora/letra?letra=${letraTraducao}`).subscribe(data => {
-        this.enviarParaDevice(data);
-      }, err => {
-        console.log(err);
-        this.toast.show(`Erro chamada para a tradutora`, "5000", "center").subscribe();
-      });
+    this.tradutoraService.traduzirLetra(letraTraducao).subscribe( data => {
+      this.enviarParaDevice(data);
+      letraTraduzida = data;
+    }, err => {
+      this.toast.show(`Erro chamada para a tradutora`, "5000", "center").subscribe();
     });
+
+    return letraTraduzida;
   }
 
   enviarParaDevice(letraTraduzida :LetraTraduzida){
     this.equipamentoService.listarEquipamentos().subscribe(equipamentos => {
       equipamentos.forEach( equipamento => {
-        console.log(`Chamando Equipamento ${equipamento.id} para a letra: ${letraTraduzida.caractere} -  ${letraTraduzida.braille}`);
-        let path = `http://${equipamento.id}/braille/?pin=${letraTraduzida.braille}&tempo=300`;
-        return new Promise(resolve => {
-          this.http.get(path).subscribe(data => {
-          }, err => {
-            console.log(err);
-            this.toast.show(`Erro ao Enviar para o equipamento ${equipamento.id}`, "5000", "center").subscribe();
-          });
+        console.log(`Chamando Equipamento ${equipamento.ip} para a letra: ${letraTraduzida.caractere}( ${letraTraduzida.braile} )`);
+        this.equipamentoService.enviarLetraParaEquipamento(equipamento, letraTraduzida).subscribe( ret => {
         });
-      })
+      });
     });
-
-
-
   }
 }
