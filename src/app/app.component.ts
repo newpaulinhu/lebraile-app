@@ -39,31 +39,19 @@ export class MyApp {
 
     this.appMenuItems = [
       {title: 'Tradução', component: TraducaoPage, icon: 'analytics'},
-      {title: 'Equipamentos', component: EquipamentosPage, icon: 'finger-print'},
-      {title: 'Livros', component: LivrosPage, icon: 'home'}
+      {title: 'Equipamentos', component: EquipamentosPage, icon: 'finger-print'}
     ];
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
-      // Okay, so the platform is ready and our plugins are available.
-
-      //*** Control Splash Screen
-      // this.splashScreen.show();
-      // this.splashScreen.hide();
-
-      //*** Control Status Bar
       this.statusBar.styleDefault();
       this.statusBar.overlaysWebView(false);
-
-      //*** Control Keyboard
       this.keyboard.disableScroll(true);
     });
   }
 
   openPage(page) {
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
   }
 
