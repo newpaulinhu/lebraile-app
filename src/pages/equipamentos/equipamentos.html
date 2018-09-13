@@ -23,14 +23,12 @@
 
   <ion-card *ngFor="let eqp of equipamentos">
     <ion-card-header>
-      <h2>Equipamento: $ {{eqp.id}}</h2>
+      <h2>{{eqp.nomeAluno}}</h2>
     </ion-card-header>
     <ion-card-content>
       <ul>
-        <li>{{eqp.id}}</li>
-        <li>{{eqp.nome}}</li>
-        <li>{{eqp.velocidadeLeitura}}</li>
-        <li>{{eqp.tempoCaractere}}</li>
+        <li>Equipamento: {{eqp.ip}}</li>
+        <li>Velocidade de Leitura: {{eqp.tempoCaractere}}</li>
       </ul>
     </ion-card-content>
   </ion-card>
