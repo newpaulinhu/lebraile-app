@@ -3,7 +3,7 @@
     <name>Lebraile App</name>
     <description>Lebraile App</description>
     <author email="pauloesporto@gmail.com" href="https://br.linkedin.com/in/paulo-porto-09970449">Paulo Porto</author>
-    <content original-src="index.html" src="http://192.168.11.130:8100" />
+    <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />

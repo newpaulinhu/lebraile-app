@@ -27,6 +27,8 @@
       <ion-textarea [(ngModel)]="textoTraducao" (ionChange)="traduzir()" placeholder="Insira um texto para traduzir"></ion-textarea>
     </ion-item>
   </ion-card>
+
+  <app-letra-traduzida *ngFor="let letra of letrasTraduzidas" [letra]="letra" ></app-letra-traduzida>
   
 
 

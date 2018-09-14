@@ -27,6 +27,7 @@ import {LivrosPage} from "../pages/livros/livros";
 import {EquipamentosPage} from "../pages/equipamentos/equipamentos";
 import { EquipamentoServiceProvider } from '../providers/equipamento-service/equipamento-service';
 import { TradutoraServiceProvider } from '../providers/tradutora-service/tradutora-service';
+import { LetraTraduzidaComponent } from '../pages/traducao/letra-traduzida.component';
 
 
 export function provedorStorage() {
@@ -45,7 +46,8 @@ export function provedorStorage() {
     LivrosPage,
     EquipamentosPage,
     TraducaoPage,
-    CameraPage
+    CameraPage,
+    LetraTraduzidaComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +70,8 @@ export function provedorStorage() {
     LivrosPage,
     EquipamentosPage,
     TraducaoPage,
-    CameraPage
+    CameraPage,
+    LetraTraduzidaComponent
   ],
   providers: [
     StatusBar,

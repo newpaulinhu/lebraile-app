@@ -15,7 +15,7 @@ import { LetraTraduzida } from '../../pages/traducao/letra-traduzida';
 */
 @Injectable()
 export class EquipamentoServiceProvider {
-  private readonly apiRoot = 'https://lebraile-api.herokuapp.com/lebraile-web';
+  private readonly apiRoot = 'https://lebraile-api.herokuapp.com';
   constructor(
     private _storage: Storage,
     private _http: HttpClient

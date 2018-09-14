@@ -16,6 +16,7 @@ import { TradutoraServiceProvider } from '../../providers/tradutora-service/trad
 })
 export class TraducaoPage {
 
+  public letrasTraduzidas = new Array<LetraTraduzida>();
   textoTraducao: string;
   timeoutMS = 10000;
 
@@ -31,17 +32,14 @@ export class TraducaoPage {
     this.nav.push(EquipamentosPage, from);
   }
 
-  traduzir(): LetraTraduzida{
-    let letraTraduzida: LetraTraduzida;
+  traduzir(){
     let letraTraducao = this.textoTraducao.substr(this.textoTraducao.length - 1);
     this.tradutoraService.traduzirLetra(letraTraducao).subscribe( data => {
       this.enviarParaDevice(data);
-      letraTraduzida = data;
+      this.letrasTraduzidas.push(data);
     }, err => {
       this.toast.show(`Erro chamada para a tradutora`, "5000", "center").subscribe();
     });
-
-    return letraTraduzida;
   }
 
   enviarParaDevice(letraTraduzida :LetraTraduzida){
